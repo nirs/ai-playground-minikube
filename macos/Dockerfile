@@ -4,12 +4,10 @@ FROM ubuntu:22.04 AS builder
 RUN apt-get update && \
     apt-get install -y git cmake build-essential libvulkan1 libgl1-mesa-dev libvulkan-dev
 
-# Copy local source folder into the image
-## I changed one line in the source code in main.cpp 
-## const bool enableValidationLayers = false;
 COPY ./vulkan_minimal_compute /vulkan-demo
 WORKDIR /vulkan-demo
-RUN cmake . && make
+RUN cmake -DCMAKE_BUILD_TYPE=Release . \
+    && make
 
 # --- Runtime container ---
 FROM ubuntu:22.04
