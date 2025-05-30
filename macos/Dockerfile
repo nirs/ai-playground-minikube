@@ -24,4 +24,7 @@ RUN apt-get update && apt-get install -y \
 # Copy binary from builder
 COPY --from=builder /vulkan-demo/vulkan_minimal_compute /vulkan_minimal_compute
 
+# Shaders are accesssed in runtime
+COPY ./vulkan_minimal_compute/shaders /shaders
+
 CMD ["/vulkan_minimal_compute"]
