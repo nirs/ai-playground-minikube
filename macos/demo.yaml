@@ -9,9 +9,6 @@ spec:
     image: local/d1
     imagePullPolicy: Never
     command: ["/vulkan_minimal_compute"]
-    env:
-    - name: VK_INSTANCE_LAYERS
-      value: ""
     resources:
       limits:
         squat.ai/dri: 1
