@@ -15,12 +15,3 @@ spec:
     resources:
       limits:
         squat.ai/dri: 1
-    volumeMounts:
-    - mountPath: /dev
-      name: dev
-    securityContext:
-      privileged: true
-  volumes:
-  - name: dev
-    hostPath:
-      path: /dev
