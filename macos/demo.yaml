@@ -8,7 +8,7 @@ spec:
   - name: vulkan-demo
     image: local/d1
     imagePullPolicy: Never
-    command: ["/vulkan_minimal_compute"]
+    command: ["sh", "-c" , "trap 'exit 0' TERM; while true; do sleep 60 & wait; done"]
     resources:
       limits:
         squat.ai/dri: 1
