@@ -6,7 +6,7 @@ metadata:
 spec:
   containers:
   - name: vulkan-demo
-    image: local/t3
+    image: local/d1
     imagePullPolicy: Never
     command: ["/vulkan_minimal_compute"]
     env:
