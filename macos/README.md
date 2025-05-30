@@ -17,7 +17,8 @@ Start the cluster:
 ```console
 minikube start -d krunkit
 kubectl apply -f daemon.yaml
-kubectl apply -f demo.yaml
+kubectl apply -f demo-gpu.yaml
+kubectl apply -f demo-cpu.yaml
 ```
 
 Check that the GPU is detected in the demo container:
@@ -30,12 +31,22 @@ GPU0:
 GPU1:
 ```
 
-Run the demo program:
+Run the demo program using the GPU:
 
 ```console
-% kubectl exec pod/vulkan-demo -- sh -c 'time /vulkan_minimal_compute'
+% kubectl exec pod/vulkan-demo-gpu -- sh -c 'time /vulkan_minimal_compute'
 
-real    0m0.355s
-user    0m0.314s
-sys     0m0.016s
+real    0m0.357s
+user    0m0.317s
+sys     0m0.008s
+```
+
+Run the demo program using the CPU:
+
+```console
+% kubectl exec pod/vulkan-demo-cpu -- sh -c 'time /vulkan_minimal_compute'
+
+real    0m0.656s
+user    0m0.940s
+sys     0m0.012s
 ```
