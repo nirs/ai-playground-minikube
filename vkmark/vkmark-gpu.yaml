@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: vkmark-gpu
+  namespace: default
+spec:
+  containers:
+  - name: vkmark
+    image: quay.io/nirsof/vkmark:v1
+    command: ["sh", "-c" , "trap 'exit 0' TERM; while true; do sleep 60 & wait; done"]
+    resources:
+      limits:
+        squat.ai/dri: 1

@@ -1,0 +1,29 @@
+# Build container based on
+# https://github.com/vkmark/vkmark#building-requirements
+
+FROM quay.io/slopezpa/fedora-vgpu as builder
+
+RUN dnf -y install \
+        assimp-devel \
+        g++ \
+        git \
+        glm-devel \
+        meson \
+        vulkan-devel
+
+RUN git clone https://github.com/vkmark/vkmark.git
+
+WORKDIR /vkmark
+
+RUN meson setup build \
+    && meson compile -C build \
+    && meson install -C build --destdir /tmp/vkmark
+
+FROM quay.io/slopezpa/fedora-vgpu
+
+RUN dnf install -y assimp \
+    && dnf clean all
+
+COPY --from=builder /tmp/vkmark/usr/local /usr/local/
+
+CMD = ["vkmark", "--winsys", "headless"]
