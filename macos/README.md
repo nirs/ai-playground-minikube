@@ -38,7 +38,7 @@ kubectl apply -f demo-cpu.yaml
 Check that the GPU is detected in the demo container:
 
 ```console
-% kubectl exec pod/vulkan-demo -it -- vulkaninfo --summary | grep GPU
+% kubectl exec pod/vulkan-demo-gpu -it -- vulkaninfo --summary | grep GPU
 GPU0:
     deviceType         = PHYSICAL_DEVICE_TYPE_INTEGRATED_GPU
     deviceName         = Virtio-GPU Venus (Apple M2 Max)
