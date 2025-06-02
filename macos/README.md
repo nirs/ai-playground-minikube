@@ -1,16 +1,27 @@
+
 # Instructions
 
-Build the image:
-
+## Pre-requsite 
 ```console
-make
+### Checkout the minikube's WIP: [Krunkit PR]([url](https://github.com/kubernetes/minikube/pull/20826))
+gh repo clone kubernetes/minikube
+gh pr checkout 20826
+
+
+# install krunkit
+$ brew tap slp/krunkit
+$ brew install krunkit
+
+# install vmnet-helper
+# Follow https://github.com/nirs/vmnet-helper?tab=readme-ov-file#installation
+
+# Build Docker Image
+$ make
+
+# Push the image to the registry:
+$ make push
 ```
 
-Push the image to the registry:
-
-```console
-make push
-```
 
 Start the cluster:
 
