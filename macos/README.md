@@ -84,22 +84,22 @@ kubectl apply -f uvkc-cpu.yaml
 List the benchmarks:
 
 ```console
-% kubectl exec pod/uvkc-cpu -it -- ls -1 /uvkc
+% kubectl exec pod/uvkc-gpu -it -- ls -1 /uvkc
 atomic_reduce
-conv2d_mali_valhall
-copy_storage_buffer
-mad_throughput
-matmul_tiled_mali_valhall
-mmt_mali_valhall
-one_workgroup_reduce
-tree_reduce
 conv2d_adreno
+conv2d_mali_valhall
 copy_sampled_image_to_storage_buffer
+copy_storage_buffer
 dispatch_void_shader
+mad_throughput
 matmul_tiled_adreno
+matmul_tiled_mali_valhall
 mmt_adreno
+mmt_mali_valhall
 one_workgrop_argmax
+one_workgroup_reduce
 subgroup_arithmetic
+tree_reduce
 vmt_rdna3
 ```
 
@@ -109,7 +109,7 @@ benchmark documentation.
 Running a benchmark:
 
 ```console
-% kubectl exec pod/uvkc-gpu -it --context krunkit -- /uvkc/mad_throughput
+% kubectl exec pod/uvkc-gpu -it -- /uvkc/mad_throughput
 2025-06-01T18:53:04+00:00
 Running /uvkc/mad_throughput
 Run on (2 X 48 MHz CPU s)
